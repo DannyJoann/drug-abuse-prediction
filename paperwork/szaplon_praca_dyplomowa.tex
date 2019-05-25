@@ -1,0 +1,189 @@
+% strona tytu³owa pracy dyplomowej wersja z 23.03.2016, LS
+%\documentclass[a4paper,twoside,openright,11pt]{report}
+\documentclass[a4paper,openright,11pt]{report}
+%
+\usepackage{graphicx}
+% pzydatne pakiety je¿eli tytu³ zawiera symbole matematyczne:
+\usepackage{polski}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%
+%Jesli uzywasz kodowania polskich znakow ISO-8859-2 nastepna linia powinna byc 
+%odkomentowana
+%\usepackage[latin2]{inputenc}
+%Jesli uzywasz kodowania polskich znakow CP-1250 to ta linia powinna byc 
+%odkomentowana
+\usepackage[cp1250]{inputenc}
+%
+% je¿eli u¿ywasz utf8 siêgnij do dokumentacji LaTeXa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parametry strony, trochê "na wyrost", pod k¹tem projektu ewentualnej klasy dokumentu
+\textwidth\paperwidth
+\advance\textwidth -55mm
+\oddsidemargin-1in
+\advance\oddsidemargin 30mm
+\evensidemargin-1in
+\advance\evensidemargin 25mm
+\topmargin -1in
+\advance\topmargin 2cm
+\setlength\textheight{48\baselineskip}
+\addtolength\textheight{\topskip}
+\marginparwidth15mm
+%
+% definicja strony tytu³owej-PROSZÊ NIE EDYTOWAÆ
+%LOGO PK i WFMI umieszczamy w tym samym katalogu co dokument
+%
+\renewcommand\maketitle{%
+	\begin{titlepage}%
+		\noindent
+		\begin{minipage}[b]{0.9in}%
+			\includegraphics[scale=0.9]{PK-logo.png}
+		\end{minipage}
+		\begin{minipage}[b]{4.5in}%
+			\begin{center}%
+				{\LARGE\textbf{Politechnika Krakowska \\ im. Tadeusza Ko\'sciuszki}\\
+					\vspace{0.2cm}
+					Wydzia\l{} Fizyki, Matematyki i Informatyki\par}
+			\end{center}
+		\end{minipage}
+		\begin{minipage}[b]{1in}%
+			\includegraphics[scale=1]{WFMI-logo.png}
+		\end{minipage}
+		
+		\vspace{1cm plus 1fill} 
+		
+		\begin{center}%
+			\vspace{0.2cm}
+			{\Large\bf\autor\par}
+			{\large Nr albumu: \nralbumu\par}                                           
+			\vspace{8mm plus .1fill}
+			{\LARGE\textbf{\tytulpl}\par}
+			\vspace{2mm}
+			{\LARGE\textbf{\tytulang}\par}
+			\vspace{8mm plus .1fill}
+			{\large\bf Praca \rodzajpracy\\[3pt]
+				na kierunku \MakeUppercase{\kierunek}
+			}
+			\vspace{2cm plus 1.5fill}
+			\begin{flushright}\large
+				\begin{tabular}{l}
+					Praca wykonana pod kierunkiem\\
+					\bfseries \opiekun\\ \\
+					\bfseries Uzgodniona ocena:\dotfill \\[10mm]
+					\dotfill\\
+					podpisy promotora i recenzenta
+				\end{tabular}
+			\end{flushright}
+			\vspace{1cm plus 1fill}
+			{\large \textbf{\miasto\ \rok}\par}
+		\end{center}
+	\end{titlepage}
+}
+% KONIEC DEFINICJI STRONY TYTU£OWEJ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%DANE DO PRACY: proszê ZMIENIÆ przyk³adowe dane na odpowiadaj¹ce KONKRETNEJ pracy dyplomowej
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%AUTOR PRACY
+\def\autor{Jan Iksiñski}
+%NUMER ALBUMU
+\def\nralbumu{666999}
+%TYTU£ PO POLSKU
+\def\tytulpl{Pewne w³asnoœci pewnych funkcji \\ 
+	w przestrzeniach $\Omega_k^n(\aleph) $}
+%TYTU£ PO ANGIELSKU
+\def\tytulang{Some properties of some functions in spaces $\Omega_k^n(\aleph) $}
+%RODZAJ PRACY (licencjacka lub magisterska lub in¿ynierska)
+\def\rodzajpracy{licencjacka}
+%KIERUNEK
+\def\kierunek{matematyka}
+%OPIEKUN czyli PROMOTOR\\INSTYTUT\\WYDZIA£ I UCZELNIA je¿eli inne ni¿ WFMI PK
+\def\opiekun{dra Adama Igrekowskiego\\
+				Instytut Matematyki }
+%MIASTO gdzie odbywa siê obrona
+\def\miasto{Kraków}
+%ROK z³o¿enia pracy
+\def\rok{2016}
+%% KONIEC DANYCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%---------------------------------------------------------------------------
+%Strona tytu³owa
+
+\maketitle
+
+%---------------------------------------------------------------------------
+%Dedykacja, podziêkowania
+
+\null\vfill\par
+\begin{flushright}
+Sk³adam serdeczne podziêkowania...\\
+Gor¹co dziêkujê równie¿...
+\end{flushright}
+
+%---------------------------------------------------------------------------
+%Spis treœci
+\tableofcontents
+%\clearpage
+
+%---------------------------------------------------------------------------
+%Skróty, symbole, sta³e fizyczne
+
+\chapter*{Lista skrótów}
+\label{cha:lista skrotow}
+\addcontentsline{toc}{chapter}{Lista skrótów}
+%\clearpage
+%\chapter*{Sta³e fizyczne}
+%\chapter*{Lista symboli}
+
+%---------------------------------------------------------------------------
+%Rozdzia³y
+
+\include{rozdzial1}
+%\clearpage
+\include{rozdzial2}
+%\clearpage
+\include{rozdzial3}
+%\clearpage
+\include{rozdzial4}
+%\clearpage
+\include{rozdzial5}
+%\clearpage
+\include{rozdzial6}
+%\clearpage
+\include{rozdzial7}
+%\clearpage
+
+%---------------------------------------------------------------------------
+%Spis rysunków
+
+\listoffigures
+%\clearpage
+
+%---------------------------------------------------------------------------
+%Spis tabel
+
+\listoftables
+%\clearpage
+
+%---------------------------------------------------------------------------
+%Bibliografia
+
+\bibliographystyle{acm}
+\bibliography{bibliografia}
+%\clearpage
+
+%---------------------------------------------------------------------------
+%Za³¹czniki
+
+\chapter*{Za³¹czniki}
+\label{cha:zalaczniki}
+\addcontentsline{toc}{chapter}{Za³¹czniki}
+
+%---------------------------------------------------------------------------
+
+\end{document}
