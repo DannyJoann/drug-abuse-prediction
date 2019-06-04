@@ -20,6 +20,9 @@
 % je¿eli u¿ywasz utf8 siêgnij do dokumentacji LaTeXa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % parametry strony, trochê "na wyrost", pod k¹tem projektu ewentualnej klasy dokumentu
+\usepackage{setspace}
+%\usepackage{titlesec}
+
 \textwidth\paperwidth
 \advance\textwidth -55mm
 \oddsidemargin-1in
@@ -117,7 +120,9 @@
 
 %---------------------------------------------------------------------------
 %Dedykacja, podziêkowania
-{\fontsize{12pt}{1,5}\selectfont
+
+{\fontsize{12pt}{1.3}\selectfont
+\begin{spacing}{1.3}
 \null\vfill\par
 \begin{flushright}
 Sk³adam serdeczne podziêkowania...\\
@@ -134,9 +139,9 @@ Gor¹co dziêkujê równie¿...
 %---------------------------------------------------------------------------
 %Skróty, symbole, sta³e fizyczne
 
-\chapter*{Lista skrótów}
-\label{cha:lista skrotow}
-\addcontentsline{toc}{chapter}{Lista skrótów}
+%\chapter*{Lista skrótów}
+%\label{cha:lista skrotow}
+%\addcontentsline{toc}{chapter}{Lista skrótów}
 %\clearpage
 %\chapter*{Sta³e fizyczne}
 %\chapter*{Lista symboli}
@@ -161,19 +166,19 @@ Gor¹co dziêkujê równie¿...
 %---------------------------------------------------------------------------
 %Spis rysunków
 
-\listoffigures
+%\listoffigures
 %\clearpage
 
 %---------------------------------------------------------------------------
 %Spis tabel
 
-\listoftables
+%\listoftables
 %\clearpage
 
 %---------------------------------------------------------------------------
 %Bibliografia
 
-\bibliographystyle{acm}
+\bibliographystyle{plain}
 \bibliography{bibliografia}
 %\clearpage
 
@@ -185,5 +190,7 @@ Gor¹co dziêkujê równie¿...
 \addcontentsline{toc}{chapter}{Za³¹czniki}
 
 %---------------------------------------------------------------------------
+\end{spacing}
 }
+
 \end{document}
