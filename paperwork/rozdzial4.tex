@@ -3,3 +3,61 @@
 
 %---------------------------------------------------------------------------
 
+\section{Wstêpna obróbka danych}
+\label{sec:R2 podzial narkotykow}
+%---------------------------------------------------------------------------
+Pierwszym krokiem przed przys¹pieniem do trenowania modeli, jest odpowienie przygotowanie zbioru. Nale¿y upewniæ siê, ¿e takie dane nie posiadaj¹ wartoœci brakuj¹cych, a wszystkie zmienne w kolumnch mieszcz¹ siê w tej samej skali oraz s¹ œciœle zwi¹zane z rozwi¹zywanym problemem.  
+\subsection{Usuniêcie kolumn systemowych}
+\label{sec:R3 usuniecie}
+Kolumny systemowe to zmienne które nie s¹ bezpoœrednio zwi¹zane z odpowiedziami ankietowanych. Poza numerem identyfikacyjnym badnego i dat¹ udzia³u w ankiecie do grupy tej nale¿¹ kolumny determinuj¹ce sposób uzupe³nienia brakuj¹cych wartoœci dla niektórych z cech. Puste pola zosta³y zast¹pione, a zmienne systemowe definiuj¹ sposób ich uzupe³nienia. Usuniêto 175 cech systemowych.
+%---------------------------------------------------------------------------
+\subsection{Wartoœci brakuj¹ce}
+\label{sec:R3 wartosci brakujace}
+
+Pomimo zapewnienia przez autorów systemu uzupe³niana brakuj¹cyh wartoœci dla niektórych kolumn mo¿na wci¹¿ zaobserwowaæ nawet znaczne braki. Brakuj¹ce wartoœci pojawiaj¹ siê w kolejnych 376 cechach. Po analizie odsetka brakuj¹cych informacji w stosunku do ca³ego zbioru cechy w których ponad 10\% wszystkich danych stanowi³y wartoœci puste, zosta³y usuniête. Usuniêto 310 zmiennych. W pozosta³ych 66 kolumnach braki zosta³y uzupe³nione najczêœniej powtarzaj¹c¹ siê wartoœci¹ w ka¿dej z nich. Z uwagi na kategoryczny charakter wszstkich cech zrezygnowano z metody uzupe³niania œredni¹ i median¹ poniewa¿, mog³by to spowodowaæ uzyskanie wartoœci nieca³kowitych i nietrafnych.
+Po wykonaniu wy¿ej opisanych operacji zbiór sk³ada siê z 2333 cech.
+%---------------------------------------------------------------------------
+\subsection{Standaryzacja danych}
+\label{sec:R3 standaryzacja}
+
+Wszystkie cechy zostaly ustandaryzowane z u¿yciem Standard Scaller'a zaimplementowanego w bibliotece ... jêzyka Python. Po przeprowadzeniu tej operacji wszystkie dane maj¹ wartoœci znajduj¹ce siê w tej samej skali. W ten sposób ³atwiej bêdzie wykryæ zale¿noœci pomiêdzy poszczególnymi cechami.
+%---------------------------------------------------------------------------
+\section{Ekstrakcja cech}
+\label{sec:R2 ekstrakcja}
+Do ekstrakcji cech u¿yto algorytmu PCA który zredukowa³ zbiór do 262 nowych zmiennych. Kolumny te w 85\% pokywaj¹ orygialne dane.
+%---------------------------------------------------------------------------
+\section{Selekcja cech}
+\label{sec:R2 selekcja}
+Bior¹c pod uwagê wci¹¿ doœæ wysok¹ liczbê cech uzyskan¹ po ekstrakcji zdecydowano siê na wykonanie selekcji. W tym celu wykorzystano lasy losowe.
+Selekcja cech zmniejszy³a zbiór do 41 zmiennych.
+%---------------------------------------------------------------------------
+\section{Testy klasyfikatorów}
+\label{sec:R2 testy}
+Przeprowadzono testy 6 ró¿nych klasyfikatorów bez u¿ycia walidacji krzy¿owej i optymalizacji parametrów w celu wykrycia potencjalnie najlepszych rozwi¹zañ. Wyniki tych testów przedstawiaj¹ siê nastêpuj¹co.
+
+\begin{table}[]
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\textbf{SVC} & \textbf{KNN} & \textbf{Decision Tree} & \textbf{Random Forest} & \textbf{Logistic Regression} & \textbf{Bayes} \\ \hline
+		0,74         & 0,74         & 0,69                   & 0,78                   & 0,75                         & 0,54           \\ \hline
+	\end{tabular}
+\end{table}
+
+Jak wid¹æ w tabeli wy¿ej najlepiej poradzi³ sobie klasyfikator Random Forest, jednak KNN, SVN i Regresja Logistyczna równie¿ maj¹ obiecuj¹ce wyniki. Z uwagi na s³aby wyniki Bayesa i Drzew decyzyjnych zdecydowano siê zrezygnowaæ z ich dalszej optymalizacji.
+%---------------------------------------------------------------------------
+\section{Optymalizacja parametrów}
+\label{sec:R2 optymalizacja}
+Ka¿dy z testowanych ma swoje parametry, którymi mo¿na manipulowaæ w celu zwiêkszenia jego skutecznoœci.
+%---------------------------------------------------------------------------
+\subsection{Algorytm genetyczny}
+\label{sec:R3 algorytm genetyczny}
+
+%---------------------------------------------------------------------------
+\subsection{Grid Search}
+\label{sec:R3 gridsearch}
+\section{Walidacja krzy¿owa}
+\label{sec:R2 walidacja}
+DLa ka¿dego ze sprawdzanych zoptymalizowanych klasyfikatów zosta³a zaimplementowana i wykorzystana walidacja krzy¿owa. Jej wyniki pozyskiwano poprzez podzia³ zbioru na 10 mniejszych oraz przeprowadzenie 10 iteracji gdzie w ka¿dej z nich inna czêœæ zbioru jest traktowana jako dane testowe, a pozosta³e jako treningowe. U¿yto funkcji StratifedKFold dla upewnienia, ¿e ka¿dy zbiór bêdzie mia³ proporcjonaln¹ iloœæ danych z ka¿dej kategorii.
+
+Wyniki zyskane z wykorzystaniem walidacji krzy¿owej zosta³y uznane za ostateczne wyniki eksperymentu.
+%---------------------------------------------------------------------------
